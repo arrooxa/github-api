@@ -1,25 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
-const UserInfo = () => {
+const UserInfo = ({userinfo}) => {
     return(
         <div className="user-info">
 
             <h2 className='username'>
-                <a href="https://github.com/arrooxa">Vitor Rocha</a>
+                <a href={`https://github.com/${userinfo.user}`}>{userinfo.name}</a>
             </h2> 
 
-            <img src="https://avatars.githubusercontent.com/u/70202034?v=4"></img>
+            <img src={userinfo.img}></img>
 
-            <h3>Santos - São Paulo</h3>
+            <h3>{userinfo.city}</h3>
 
             <ul className='repos-info'>
-                <li>Repositórios: 13</li>
-                <li>Seguidores: 2</li>
-                <li>Seguindo: 7</li>
+                <li>Repositórios: {userinfo.repos}</li>
+                <li>Seguidores: {userinfo.followers}</li>
+                <li>Seguindo: {userinfo.following}</li>
             </ul>
 
         </div>
     )
+}
+
+UserInfo.propTypes = { 
+    userinfo: PropTypes.shape({
+        user: PropTypes.string.isRequired,
+        name: PropTypes.string,
+        img: PropTypes.string.isRequired,
+        city: PropTypes.string,
+        repos: PropTypes.number.isRequired,
+        followers: PropTypes.number.isRequired,
+        following: PropTypes.number.isRequired,
+    })
 }
 
 export default UserInfo;
