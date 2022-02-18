@@ -8,7 +8,7 @@ const App = () => {
             </div>
 
             <div className="user-info">
-                <h2>
+                <h2 className='username'>
                     <a href="https://github.com/arrooxa">Vitor Rocha</a>
                 </h2>
                 <img src="https://avatars.githubusercontent.com/u/70202034?v=4"></img>
@@ -32,12 +32,18 @@ const App = () => {
                     <li>
                         <a href=''>Nome do repositório</a>
                     </li>
+                    <li>
+                        <a href=''>Nome do repositório</a>
+                    </li>
                 </ul>
             </div>
 
             <div className='starred'>
                 <h3>Favoritos: 1</h3>
                 <ul>
+                    <li>
+                        <a href=''>Nome do repositório</a>
+                    </li>
                     <li>
                         <a href=''>Nome do repositório</a>
                     </li>
