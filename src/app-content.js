@@ -7,15 +7,15 @@ import UserInfo from './components/user-info'
 import Actions from './components/actions'
 import Repos from './components/repos'
 
-const AppContent = ({userinfo, repos, starred}) => {
+const AppContent = ({userinfo, repos, starred, handleSearch}) => {
     return (
         <div className='app'>
 
-            <Search />
+            <Search handleSearch={handleSearch}/>
             
-            {userinfo.loaded && <UserInfo userinfo={userinfo}/>}
+            {!!userinfo && <UserInfo userinfo={userinfo}/>}
 
-            {userinfo.loaded && <Actions />}
+            {!!userinfo && <Actions />}
 
             {!!repos.length &&
             <Repos 
