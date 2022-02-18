@@ -1,7 +1,6 @@
 import React from 'react';
 
 const App = () => {
-<<<<<<< HEAD
     return (
         <div className='app'>
             <div className='search'>
@@ -46,10 +45,6 @@ const App = () => {
             </div>
             
         </div>
-=======
-    return(
-        <h1>Hello, World!</h1>
->>>>>>> 3640a2745ee598bddb90ff9afe96519039b8fc57
     );
 }
 
