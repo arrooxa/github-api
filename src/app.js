@@ -1,54 +1,36 @@
-import React from 'react';
+import React from 'react'
+
+// Components
+import Search from './components/search'
+import UserInfo from './components/user-info'
+import Actions from './components/actions'
+import Repos from './components/repos'
 
 const App = () => {
     return (
         <div className='app'>
-            <div className='search'>
-                <input type="search" placeholder='Digite um usuário' />
-            </div>
 
-            <div className="user-info">
-                <h2 className='username'>
-                    <a href="https://github.com/arrooxa">Vitor Rocha</a>
-                </h2>
-                <img src="https://avatars.githubusercontent.com/u/70202034?v=4"></img>
-                <h3>Santos - São Paulo</h3>
-            </div>
+            <Search />
+            
+            <UserInfo />
 
-            <ul className='repos-info'>
-                <li>Repositórios: 13</li>
-                <li>Seguidores: 2</li>
-                <li>Seguindo: 7</li>
-            </ul>
+            <Actions />
 
-            <div className='actions'>
-                <button>Ver repositórios</button>
-                <button>Ver favoritos</button>
-            </div>
+            <Repos 
+            className="repos" 
+            title="Repositórios"
+            repos={[{
+                name: "Nome do repositório",
+                link: "#"
+            }]} />
 
-            <div className='repos'>
-                <h3>Repositórios: 13</h3>
-                <ul>
-                    <li>
-                        <a href=''>Nome do repositório</a>
-                    </li>
-                    <li>
-                        <a href=''>Nome do repositório</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div className='starred'>
-                <h3>Favoritos: 1</h3>
-                <ul>
-                    <li>
-                        <a href=''>Nome do repositório</a>
-                    </li>
-                    <li>
-                        <a href=''>Nome do repositório</a>
-                    </li>
-                </ul>
-            </div>
+            <Repos 
+            className="starred" 
+            title="Favoritos"
+            repos={[{
+                name: "Nome do repositório",
+                link: "#"
+            }]} />
 
         </div>
     );
