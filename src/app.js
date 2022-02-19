@@ -28,14 +28,8 @@ const App = () => {
                         following: json.following,
                         city: json.location
                     },
-                    repos: [{
-                        name: "Nome do repositório",
-                        link: "#"
-                    }],
-                    starred: [{
-                        name: "Nome do repositório",
-                        link: "#"
-                    }]
+                    repos: [],
+                    starred: []
                 }))
                 
             })
