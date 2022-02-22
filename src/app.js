@@ -7,19 +7,23 @@ const App = () => {
     const [userInfo, setUserInfo] = useState({
         info: null,
         repos: [],
-        starred: []
+        starred: [],
+        isFetching: false,
     })
 
     function handleSearch(e){
         const value = e.target.value;
         const keyCode = e.key;
-        const target = e.target;
 
         if(keyCode === 'Enter'){
+            setUserInfo((prevState) => ({
+                ...prevState,
+                isFetching: true,
+            }))
+
             fetch(`https://api.github.com/users/${value}`)
             .then((result) => result.json())
             .then((json) => {
-                target.disabled = true;
                 setUserInfo(prevState => ({
                     ...prevState,
                     info: {
@@ -32,10 +36,13 @@ const App = () => {
                         city: json.location
                     },
                     repos: [],
-                    starred: []
+                    starred: [],
                 }))
             })
-            .then(() => target.disabled = false)
+            .then(() => setUserInfo((prevState) => ({
+                ...prevState,
+                isFetching: false,
+            })))
         }
     }
 
@@ -64,6 +71,7 @@ const App = () => {
         handleSearch={(e) => handleSearch(e)}
         getRepos={getRepos('repos')}
         getStarred={getRepos('starred')}
+        isFetching={userInfo.isFetching}
         
         />
     );
