@@ -13,11 +13,13 @@ const App = () => {
     function handleSearch(e){
         const value = e.target.value;
         const keyCode = e.key;
+        const target = e.target;
 
         if(keyCode === 'Enter'){
             fetch(`https://api.github.com/users/${value}`)
             .then((result) => result.json())
             .then((json) => {
+                target.disabled = true;
                 setUserInfo(prevState => ({
                     ...prevState,
                     info: {
@@ -28,25 +30,26 @@ const App = () => {
                         followers: json.followers,
                         following: json.following,
                         city: json.location
-                    }
+                    },
+                    repos: [],
+                    starred: []
                 }))
             })
+            .then(() => target.disabled = false)
         }
     }
 
     function getRepos(type){
         return (e) => {
-            console.log(type);
-            fetch(`https://api.github.com/users/arrooxa/${type}`)
+            fetch(`https://api.github.com/users/${userInfo.info.user}/${type}`)
             .then((result) => result.json())
             .then((json) => {
-
                 setUserInfo(prevState => ({
                     ...prevState,
-                    [type]: [{
-                        name: json[0].name,
-                        link: json[0].html_url
-                    }]
+                    [type]: json.map((repo) => ({
+                            name: repo.name,
+                            link: repo.html_url
+                    }))
                 }))
             })
         }

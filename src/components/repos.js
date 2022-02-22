@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Repos = ({className, title, repos}) => {
     return (
         <div className={className}>
-            <h3>{`${title}: ${1}`}</h3>
+            <h3>{`${title}:`}</h3>
             <ul>
                 {repos.map((repo) => 
                     <li key={repo.link}>
